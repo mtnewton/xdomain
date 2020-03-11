@@ -1,0 +1,13 @@
+<html>
+    <iframe src="http://iframe.com:8010/" frameborder="0"></iframe>
+    <script>
+        window.addEventListener("message", receiveMessage, false);
+
+        function receiveMessage(message) {
+            if (message.origin.indexOf("iframe.com:8010") == -1) {
+                return;
+            }
+            document.writeln(event.data.rand)
+        }
+    </script>
+</html>
