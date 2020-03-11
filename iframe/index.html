@@ -2,6 +2,8 @@
 
 <script>
     (function(window){
+
+        //function from https://www.w3schools.com/js/js_cookies.asp
         function getCookie(cname) {
             var name = cname + "=";
             var decodedCookie = decodeURIComponent(document.cookie);
@@ -18,11 +20,14 @@
             return "";
         }
 
+        // check cookie for value. generate a value if not set.
         let rand = getCookie('rand')
         if (!rand) {
-            rand = Math.floor((Math.random() * 1000) + 1);
+            rand = Math.floor(Math.random() * 1000);
             document.cookie = "rand=" + rand; 
         }
+
+        // send the random value to the parent window
         window.parent.postMessage({'rand': rand}, '*')
 
 

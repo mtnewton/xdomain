@@ -1,13 +1,19 @@
 <html>
     <iframe src="http://iframe.com:8010/" frameborder="0"></iframe>
     <script>
+
+        // listen for a message from the iframe
         window.addEventListener("message", receiveMessage, false);
 
         function receiveMessage(message) {
+            // check to see if the message came froma valid source
             if (message.origin.indexOf("iframe.com:8010") == -1) {
                 return;
             }
-            document.writeln(event.data.rand)
+
+            // do whatever with the data that was sent in the message
+            document.writeln(message.data.rand)
         }
+
     </script>
 </html>
